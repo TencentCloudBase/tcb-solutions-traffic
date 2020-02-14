@@ -1,25 +1,46 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
-    "pages/openapi/openapi",
-    "pages/openapi/serverapi/serverapi",
-    "pages/openapi/callback/callback",
-    "pages/openapi/cloudid/cloudid",
-    "pages/im/im",
-    "pages/im/room/room"
+    "pages/track/track",
+    "pages/my/my"
   ],
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#2a82e4",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "同程查询",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_fill.png"
+      },
+      {
+        "pagePath": "pages/track/track",
+        "text": "历史轨迹",
+        "iconPath": "images/info.png",
+        "selectedIconPath": "images/info_fill.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my_fill.png"
+      }
+    ]
+  },
   "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarBackgroundColor": "#39b54a",
+    "navigationBarTitleText": "交通方案",
+    "navigationStyle": "custom",
     "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "将用于系统判断您的当前位置用于接收通知"
+    }
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

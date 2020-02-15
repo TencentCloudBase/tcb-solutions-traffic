@@ -1,3 +1,18 @@
 <cu-custom bgColor="bg-gradual-blue">
-	<view slot="content">历史轨迹</view>
+  <view slot="content">历史轨迹</view>
 </cu-custom>
+<view class="container">
+  <view class="cu-list menu card-menu sm-border margin-top">
+    <view class="cu-item arrow" wx:for='454545'>
+      <view class="content">
+        <text class="text-grey">历史轨迹历史轨迹</text>
+      </view>
+    </view>
+  </view>
+  <view class="recordAdd">
+    <view class="cu-btn bg-blue round shadow">
+      <text class="cuIcon-add"></text>
+    </view>
+  </view>
+
+</view>

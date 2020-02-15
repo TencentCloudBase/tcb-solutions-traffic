@@ -1,0 +1,35 @@
+<!--pages/userInfoEdit/userInfoEdit.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">修改身份信息</view>
+</cu-custom>
+<form class="container">
+  <view class="cu-form-group margin-top">
+    <view class="title">昵称</view>
+    <input placeholder="请输入昵称"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">电话</view>
+    <input placeholder="请输入电话"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">区域</view>
+    <picker mode="region" bindchange="regionChange" value="{{region}}">
+      <view class="picker">
+        {{region[0]}} {{region[1]}} {{region[2]}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="cu-form-group">
+    <view class="title">详细地址</view>
+    <input placeholder="请输入详细地址" disabled="{{hasLocation}}" value="{{locationAddress}}"></input>
+    <button open-type="openSetting" bindopensetting="callbackSetting" class="cuIcon-locationfill text-blue" size="mini" wx:if='{{setAuth}}'></button>
+    <button class="cuIcon-locationfill text-blue" size="mini" bindtap="chooseLocation" wx:elif='{{!hasLocation}}'></button>
+  </view>
+
+  <view class="padding flex btm-btn">
+    <button class="cu-btn  bg-gradual-blue margin-tb-xl lg shadow-blur">确认修改</button>
+  </view>
+
+</form>

@@ -1,0 +1,15 @@
+/* pages/userInfoEdit/userInfoEdit.wxss */
+
+.cu-form-group .title {
+  width: 150rpx;
+  text-align: justify;
+  text-align-last: justify;
+}
+.cu-form-group picker .picker {
+  text-align: left;
+}
+
+
+.btm-btn .cu-btn{
+  letter-spacing:6rpx;
+}

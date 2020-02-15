@@ -90,10 +90,32 @@ function json2Form(json) {
   }
   return str.join("&");
 } 
+
+/**
+ * 处理数字，如果少于2位则前面加0（用于时间格式化）
+ */
+var formatNumber = function (n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+/**
+ * /Date(1915151515)/格式转为 yyyy-MM-dd
+ */
+var formatDate = function (datetime, suffix) {
+  var times = parseInt(datetime.replace("/Date(", "").replace(")/", ""));
+  var date = getDate(times);
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  suffix = suffix ? suffix : '-';
+  return [year, month, day].map(formatNumber).join(suffix);
+}
+
 module.exports = {
   randomNum,
   converMbSize,
   converSize,
   checkImage,
-  json2Form
+  json2Form,
+  formatDate
 }

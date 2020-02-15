@@ -2,7 +2,11 @@
   <view slot="content">交通方案</view>
 </cu-custom>
 
-
+<swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper-item wx:for="{{swiperList}}" wx:key="id">
+    <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+  </swiper-item>
+</swiper>
 <view class="cu-bar bg-white solid-bottom margin-top">
   <view class="action">
     <text class="cuIcon-title text-green "></text> 查询条件
@@ -16,16 +20,32 @@
     </view>
   </picker>
 </view>
-
 <view class="cu-form-group">
-  <view class="title">单项输入</view>
+  <view class="title">出行方式</view>
   <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
     <view class="picker">
       {{index ? picker[index] : '火车'}}
     </view>
   </picker>
 </view>
+<view class="cu-form-group">
+  <view class="title">查询关键字</view>
+  <input placeholder="如火车飞机班次"></input>
+</view>
 
 <view class="padding">
-  <button class="cu-btn btn-search bg-blue">查询</button>
+  <button bindtap="searchVehicle" class="cu-btn btn-search bg-blue">查询</button>
+</view>
+<view class="cu-bar bg-white solid-bottom">
+  <view class="action">
+    <text class="cuIcon-title text-green "></text> 查询结果
+  </view>
+</view>
+<view class="cu-list menu sm-border">
+  <view class="cu-item" wx:for="{{4}}" wx:key="item">
+    <view class="content">
+      <text class="iconfont icon-bus text-grey"></text>
+      <text class="text-grey">2020-1-20日 武汉-上海</text>
+    </view>
+  </view>
 </view>

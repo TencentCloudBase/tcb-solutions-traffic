@@ -1412,7 +1412,7 @@ button.icon.lg {
 	align-items: center
 }
 
-.cu-list.menu>.cu-item .content>text[class*=cuIcon] {
+.cu-list.menu>.cu-item .content>text[class*=cuIcon], .cu-list.menu>.cu-item .content>text[class*=iconfont] {
 	display: inline-block;
 	margin-right: 10rpx;
 	width: 1.6em;

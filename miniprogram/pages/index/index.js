@@ -5,9 +5,39 @@ Page({
    * 页面的初始数据
    */
   data: {
-    picker: ["火车", "汽车", "飞机"],
+    picker: ["火车", "汽车", "公交", "飞机", "轮船", "其他"],
     index: 0,
     date: '2020-02-13',
+    swiperList: [{
+      id: 0,
+      type: 'image',
+      url: 'cloud://demo-3ee737.3f9c-demo-3ee737-1257366989/1.png'
+    }, {
+      id: 1,
+      type: 'image',
+        url: 'cloud://demo-3ee737.3f9c-demo-3ee737-1257366989/2.png',
+    }, {
+      id: 2,
+      type: 'image',
+        url: 'cloud://demo-3ee737.3f9c-demo-3ee737-1257366989/3.png'
+    }]
+  },
+
+  // TODO:
+  searchVehicle(){
+    wx.cloud.callFunction({
+      name: 'searchVehicle',
+      data: {
+        vehicle_type: this.data.picker[this.data.index],
+        vehicle_date: this.data.vehicle_date,
+        limit: 10,
+        skip: 0
+        // vehicle_date
+      }
+    }).then(res=>{
+      console.log(res);
+    })
+
   },
 
   /**

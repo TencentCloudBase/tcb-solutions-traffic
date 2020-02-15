@@ -1,3 +1,5 @@
+
+require('./utils/libs.js');
 //app.js
 App({
   onLaunch: function () {

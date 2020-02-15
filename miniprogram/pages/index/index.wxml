@@ -3,7 +3,7 @@
 </cu-custom>
 
 <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
-  <swiper-item wx:for="{{swiperList}}" wx:key>
+  <swiper-item wx:for="{{swiperList}}" wx:key="id">
     <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
   </swiper-item>
 </swiper>
@@ -42,7 +42,7 @@
   </view>
 </view>
 <view class="cu-list menu sm-border">
-  <view class="cu-item" wx:for="{{4}}">
+  <view class="cu-item" wx:for="{{4}}" wx:key="item">
     <view class="content">
       <text class="iconfont icon-bus text-grey"></text>
       <text class="text-grey">2020-1-20日 武汉-上海</text>

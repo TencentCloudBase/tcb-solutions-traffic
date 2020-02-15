@@ -30,8 +30,12 @@ Page({
       data: {
         vehicle_type: this.data.picker[this.data.index],
         vehicle_date: this.data.vehicle_date,
+        limit: 10,
+        skip: 0
         // vehicle_date
       }
+    }).then(res=>{
+      console.log(res);
     })
 
   },

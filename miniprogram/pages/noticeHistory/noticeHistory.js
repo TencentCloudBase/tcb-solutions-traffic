@@ -1,23 +1,11 @@
-// miniprogram/pages/my/my.js
+// pages/noticeHistory/noticeHistory.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    navList: [{
-        name: '修改身份信息',
-        url: '/pages/userInfoEdit/userInfoEdit'
-      },
-      {
-        name: '历史通知',
-        url: '/pages/noticeHistory/noticeHistory'
-      },
-      {
-        name: '关于我们',
-        url: ''
-      }
-    ]
+
   },
 
   /**
@@ -68,11 +56,9 @@ Page({
   onReachBottom: function() {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
+  noticeDel() {
+    wx.showModal({
+      content: '确认删除该条通知？',
+    })
   }
 })

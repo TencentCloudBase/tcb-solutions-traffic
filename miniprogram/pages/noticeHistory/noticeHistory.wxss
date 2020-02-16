@@ -1,0 +1,5 @@
+/* pages/noticeHistory/noticeHistory.wxss */
+text.cuIcon-delete{
+  font-size: 36rpx;
+  padding: 0 28rpx;
+}

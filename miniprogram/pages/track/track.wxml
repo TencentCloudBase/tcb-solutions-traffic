@@ -2,10 +2,10 @@
   <view slot="content">历史轨迹</view>
 </cu-custom>
 <view class="container">
-  <view class="cu-list menu card-menu sm-border margin-top">
-    <navigator  url="/pages/trackAdd/trackAdd?intype=view" class="cu-item arrow" wx:for='454545'>
+  <view class="cu-list menu card-menu sm-border margin-top margin-bottom">
+    <navigator  url="/pages/trackAdd/trackAdd?intype=view" class="cu-item arrow" wx:for='454545454545454545' wx:key='id'>
       <view class="content">
-        <text class="text-grey">历史轨迹历史轨迹</text>
+        <text class="text-grey">历史轨迹{{index + 1}}</text>
       </view>
     </navigator>
   </view>

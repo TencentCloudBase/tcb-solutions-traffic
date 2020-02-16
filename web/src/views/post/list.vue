@@ -23,8 +23,12 @@
         </el-table-column>
         <el-table-column prop="_id" width="120" label="操作">
           <template slot-scope="scope">
-            <el-button type="text" size="small" @click="remove(scope.row)">删除</el-button>
-            <el-button type="text" @click="gotoEdit(scope.row._id)" size="small">编辑</el-button>
+            <el-button type="text" size="small" @click="remove(scope.row)"
+              >删除</el-button
+            >
+            <el-button type="text" @click="gotoEdit(scope.row._id)" size="small"
+              >编辑</el-button
+            >
           </template>
         </el-table-column>
       </el-table>

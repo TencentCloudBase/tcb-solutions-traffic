@@ -36,3 +36,9 @@ navigator.navigator-hover{
   background-color: #fff;
   opacity:1;
 }
+
+button.cu-item.arrow{
+  width: 100%;
+  font-weight:400;
+  text-align: left;
+}

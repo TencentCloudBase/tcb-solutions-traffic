@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/track/track",
     "pages/userInfoEdit/userInfoEdit",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/trackAdd/trackAdd"
   ],
   "tabBar": {
     "color": "#333333",

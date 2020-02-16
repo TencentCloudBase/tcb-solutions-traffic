@@ -36,16 +36,18 @@
 <view class="padding">
   <button bindtap="searchVehicle" class="cu-btn btn-search bg-blue">查询</button>
 </view>
-<view class="cu-bar bg-white solid-bottom">
-  <view class="action">
-    <text class="cuIcon-title text-green "></text> 查询结果
-  </view>
-</view>
-<view class="cu-list menu sm-border">
-  <view class="cu-item" wx:for="{{4}}" wx:key="item">
-    <view class="content">
-      <text class="iconfont icon-bus text-grey"></text>
-      <text class="text-grey">2020-1-20日 武汉-上海</text>
+<block wx:if="{{resultList.length > 0}}">
+  <view class="cu-bar bg-white solid-bottom">
+    <view class="action">
+      <text class="cuIcon-title text-green "></text> 查询结果
     </view>
   </view>
-</view>
+  <view class="cu-list menu sm-border solid-bottom margin-bottom">
+    <view class="cu-item" wx:for="{{resultList}}" wx:key="_id">
+      <view class="content">
+        <text class="iconfont icon-bus text-grey"></text>
+        <text class="text-grey">{{item.vehicle_creation_time}} {{item.vehicle_type}}</text>
+      </view>
+    </view>
+  </view>
+</block>

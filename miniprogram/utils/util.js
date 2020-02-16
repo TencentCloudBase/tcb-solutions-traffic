@@ -119,6 +119,7 @@ function alert(title, duration = 1500, mask = true, icon = 'none'){
         mask: mask
     })
 }
+
 module.exports = {
   randomNum,
   converMbSize,

@@ -1,0 +1,221 @@
+/* 
+Author: Migao
+Website: https://migao.io
+*/
+
+.blue {
+  color: #007bff;
+}
+.indigo {
+  color: #6610f2;
+}
+.purple {
+  color: #6f42c1;
+}
+.pink {
+  color: #e83e8c;
+}
+.red {
+  color: #dc3545;
+}
+.orange {
+  color: #fd7e14;
+}
+.yellow {
+  color: #ffc107;
+}
+.green {
+  color: #28a745;
+}
+.teal {
+  color: #20c997;
+}
+.cyan {
+  color: #17a2b8;
+}
+.white {
+  color: #fff;
+}
+.gray {
+  color: #868e96;
+}
+.gray-dark {
+  color: #343a40;
+}
+.primary {
+  color: #007bff;
+}
+.secondary {
+  color: #868e96;
+}
+.success {
+  color: #28a745;
+}
+.info {
+  color: #17a2b8;
+}
+.warning {
+  color: #ffc107;
+}
+.danger {
+  color: #dc3545;
+}
+.light {
+  color: #f8f9fa;
+}
+.dark {
+  color: #343a40;
+}
+
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.fixed {
+  position: fixed;
+}
+.block {
+  display: block;
+}
+.none {
+  display: none;
+}
+.inline {
+  display: inline;
+}
+.inline-block {
+  display: inline-block;
+}
+.block {
+  display: inline-block;
+}
+.font12 {
+  font-size: 12px;
+}
+.font14 {
+  font-size: 14px;
+}
+.font16 {
+  font-size: 16px;
+}
+.flex {
+  display: flex;
+  &.row {
+    flex-direction: row;
+  }
+  &.column {
+    flex-direction: column;
+  }
+  .flex-none {
+    flex: none;
+  }
+  .flex-auto {
+    flex: auto;
+  }
+  &.space-between {
+    justify-content: space-between;
+  }
+  &.space-around {
+    justify-content: space-around;
+  }
+  &.align-center {
+    align-items: center;
+  }
+  &.justify-center {
+    justify-content: center;
+  }
+  &.flex-start {
+    justify-content: flex-start;
+  }
+  &.flex-end {
+    justify-content: flex-end;
+  }
+}
+.pointer {
+  cursor: pointer;
+}
+
+.text-left {
+  text-align-last: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.italic {
+  font-style: italic;
+}
+.bold {
+  font-weight: bold;
+}
+.gray {
+  color: #666;
+}
+.normal {
+  font-style: normal;
+  font-weight: normal;
+  text-transform: none;
+}
+.lowerccase {
+  text-transform: lowercase;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.mt0 {
+  margin-top: 0;
+}
+.mt5 {
+  margin-top: 5px;
+}
+.mt10 {
+  margin-top: 10px;
+}
+.mt15 {
+  margin-top: 15px;
+}
+.mt20 {
+  margin-top: 20px;
+}
+.ml0 {
+  margin-left: 0;
+}
+.ml5 {
+  margin-left: 5px;
+}
+.ml10 {
+  margin-left: 10px;
+}
+.ml20 {
+  margin-left: 20px;
+}
+.mb0 {
+  margin-bottom: 0;
+}
+.pl5 {
+  padding-left: 5px;
+}
+.pl10 {
+  padding-left: 10px;
+}
+.pl20 {
+  padding-left: 20px;
+}
+.null {
+  color: #999;
+  text-transform: uppercase;
+}
+.maxline2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,4 +1,4 @@
-// pages/userInfoEdit/userInfoEdit.js
+// pages/trackAdd/trackAdd.js
 const util = require('../../utils/util.js');
 Page({
 
@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    date: '2020-1-1',
+    time: '12:01',
     region: ['广东省', '广州市', '海珠区'],
   },
 
@@ -13,6 +15,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    const intype = options.intype ? options.intype : "add";
+    const customTitle = intype == "add" ? "增加轨迹" : "轨迹详情";
+    this.setData({
+      intype,
+      customTitle,
+    })
+    // 测试数据
+    intype == "view" && this.setData({
+      locationAddress: '广州市海珠区新港中路397号',
+      latitude: 23.099994,
+      longitude: 113.324520,
+      markers: [{
+        latitude: 23.099994,
+        longitude: 113.324520,
+        name: 'T.I.T 创意园'
+      }],
+    })
+
 
   },
 
@@ -57,6 +77,16 @@ Page({
   onReachBottom: function() {
 
   },
+  timeChange(e) {
+    this.setData({
+      time: e.detail.value
+    })
+  },
+  dateChange(e) {
+    this.setData({
+      date: e.detail.value
+    })
+  },
 
   regionChange: function(e) {
     this.setData({
@@ -76,11 +106,6 @@ Page({
         })
       },
       fail: (res) => {
-        wx.showModal({
-          title: '',
-          content: '未授权无法获取位置',
-          showCancel: false
-        })
         wx.getSetting({
           success: res => {
             let authSetting = res.authSetting
@@ -103,20 +128,29 @@ Page({
       });
     }
   },
-
-  // 修改资料
+  // 添加轨迹
   formSubmit: function(e) {
     const info = e.detail.value;
-    if (info.username == "") {
-      util.alert("请输入昵称");
-      return;
-    } else if (info.tel == "") {
-      util.alert("请输入电话");
-      return;
-    } else if (info.address == "") {
+    if (info.address == "") {
       util.alert("请输入详细地址");
       return;
     }
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
   },
+  // 删除轨迹
+  delTrack() {
+    wx.showModal({
+      content: '确认删除该条轨迹？',
+    })
+  },
+  // 打开位置
+  openLocation(e) {
+    console.log(e)
+    wx.openLocation({
+      longitude: 113.324520,
+      latitude: 23.099994,
+      name: "T.I.T 创意园",
+      address: "广州市海珠区新港中路397号"
+    })
+  }
 })

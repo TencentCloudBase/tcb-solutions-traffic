@@ -3,18 +3,18 @@
   <view slot="backText">返回</view>
   <view slot="content">修改身份信息</view>
 </cu-custom>
-<form class="container">
+<form class="container" bindsubmit="formSubmit">
   <view class="cu-form-group margin-top">
     <view class="title">昵称</view>
-    <input placeholder="请输入昵称"></input>
+    <input placeholder="请输入昵称" name='username'></input>
   </view>
   <view class="cu-form-group">
     <view class="title">电话</view>
-    <input placeholder="请输入电话"></input>
+    <input placeholder="请输入电话"  name='tel'></input>
   </view>
   <view class="cu-form-group">
     <view class="title">区域</view>
-    <picker mode="region" bindchange="regionChange" value="{{region}}">
+    <picker mode="region" bindchange="regionChange" value="{{region}}"  name='region'>
       <view class="picker">
         {{region[0]}} {{region[1]}} {{region[2]}}
       </view>
@@ -23,13 +23,13 @@
 
   <view class="cu-form-group">
     <view class="title">详细地址</view>
-    <input placeholder="请输入详细地址" disabled="{{hasLocation}}" value="{{locationAddress}}"></input>
+    <input placeholder="请输入详细地址"  value="{{locationAddress}}"  name='address'></input>
     <button open-type="openSetting" bindopensetting="callbackSetting" class="cuIcon-locationfill text-blue" size="mini" wx:if='{{setAuth}}'></button>
     <button class="cuIcon-locationfill text-blue" size="mini" bindtap="chooseLocation" wx:elif='{{!hasLocation}}'></button>
   </view>
 
   <view class="padding flex btm-btn">
-    <button class="cu-btn  bg-gradual-blue margin-tb-xl lg shadow-blur">确认修改</button>
+    <button class="cu-btn  bg-gradual-blue margin-tb-xl lg shadow-blur"  formType="submit">确认修改</button>
   </view>
 
 </form>

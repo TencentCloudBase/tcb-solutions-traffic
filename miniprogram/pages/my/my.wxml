@@ -20,10 +20,15 @@
   </view>
   <!-- 菜单栏 -->
   <view class="cu-list menu card-menu sm-border margin-top">
-    <view class="cu-item arrow" wx:for='{{navList}}' wx:key='name'>
-      <navigator class="content" url="{{item.url}}">
+    <navigator  url="{{item.url}}" class="cu-item arrow" wx:for='{{navList}}' wx:key='name'>
+      <view class="content">
         <text class="text-grey">{{item.name}}</text>
-      </navigator>
-    </view>
+      </view>
+    </navigator>
+    <button open-type="feedback" class="cu-item arrow">
+      <view class="content " url="{{item.url}}">
+        <text class="text-grey">反馈</text>
+      </view>
+    </button>
   </view>
 </view>

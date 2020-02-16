@@ -20,23 +20,22 @@ Page({
       id: 2,
       type: 'image',
         url: 'cloud://demo-3ee737.3f9c-demo-3ee737-1257366989/3.png'
-    }],
-    resultList: []
+    }]
   },
 
+  // TODO:
   searchVehicle(){
     wx.cloud.callFunction({
-      name: 'pagination',
+      name: 'searchVehicle',
       data: {
-        dbName: 'vehicle',
-        pageIndex: 1,
-        pageSize: 10
+        vehicle_type: this.data.picker[this.data.index],
+        vehicle_date: this.data.vehicle_date,
+        limit: 10,
+        skip: 0
+        // vehicle_date
       }
     }).then(res=>{
       console.log(res);
-      this.setData({
-        resultList: res.result.data
-      })
     })
 
   },

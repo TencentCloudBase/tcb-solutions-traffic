@@ -3,16 +3,16 @@
 </cu-custom>
 <view class="container">
   <view class="cu-list menu card-menu sm-border margin-top">
-    <view class="cu-item arrow" wx:for='454545'>
+    <navigator  url="/pages/trackAdd/trackAdd?intype=view" class="cu-item arrow" wx:for='454545'>
       <view class="content">
         <text class="text-grey">历史轨迹历史轨迹</text>
       </view>
-    </view>
+    </navigator>
   </view>
   <view class="recordAdd">
-    <view class="cu-btn bg-blue round shadow">
+    <navigator url="/pages/trackAdd/trackAdd" class="cu-btn bg-blue round shadow">
       <text class="cuIcon-add"></text>
-    </view>
+    </navigator>
   </view>
 
 </view>

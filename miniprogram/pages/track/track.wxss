@@ -1,1 +1,23 @@
 /* miniprogram/pages/track/track.wxss */
+
+/* 添加纪录 */
+
+.recordAdd {
+  position: fixed;
+  bottom: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.recordAdd .cu-btn {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.recordAdd .cuIcon-add {
+  font-size: 78rpx;
+  font-weight: bold;
+}
+

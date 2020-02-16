@@ -1,1 +1,38 @@
 /* miniprogram/pages/my/my.wxss */
+
+/* 顶部 */
+
+.avatar-wrap {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-right: 30rpx;
+  margin-left: 30rpx;
+  border-radius: 20rpx;
+  padding: 20rpx 30rpx;
+
+}
+
+.avatar-wrap .u-avatar {
+  overflow: hidden;
+  width: 200rpx;
+  height: 200rpx;
+  padding: 20rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 20rpx;
+}
+
+.avatar-wrap-r {
+  flex: 1;
+  margin-left: 40rpx;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 200rpx;
+}
+
+navigator.navigator-hover{
+  background-color: #fff;
+  opacity:1;
+}

@@ -1,12 +1,11 @@
 <template>
   <svg :class="svgClass" aria-hidden="true">
-    <use :xlink:href="iconName" />
+    <use v-bind:xlink:href="iconName"></use>
   </svg>
 </template>
 
 <script lang="ts">
 import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
-import E, { Wangeditor } from "wangeditor";
 
 @Component({
   name: "SvgIcon"

@@ -58,7 +58,7 @@ export default class extends Vue {
     this.$router.push(`/post/${id}/edit`);
   }
   loadData() {
-    //
+    this.loading = false;
   }
   created() {
     this.loadData();

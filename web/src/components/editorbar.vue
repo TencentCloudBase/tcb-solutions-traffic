@@ -1,10 +1,12 @@
 <template>
   <div class="editor">
     <div ref="toolbar" class="toolbar"></div>
-    <div ref="editor" class="text"></div></div
-></template>
+    <div ref="editor" class="text"></div>
+  </div>
+</template>
 <script lang="ts">
 import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
+// @ts-ignore
 import E, { Wangeditor } from "wangeditor";
 
 @Component({})
@@ -48,7 +50,7 @@ export default class extends Vue {
       "video", // 插入视频
       "code", // 插入代码
       "undo", // 撤销
-      "redo", // 重复
+      "redo" // 重复
     ];
     this.editor.customConfig.uploadImgHooks = {
       fail: (xhr: any, editor: any, result: any) => {
@@ -59,7 +61,7 @@ export default class extends Vue {
       },
       error: (xhr: any, editor: any) => {
         // 图片上传错误的回调
-      },
+      }
     };
     this.editor.customConfig.onchange = (html: string) => {
       this.$emit("input", html); // 将内容同步到父组件中

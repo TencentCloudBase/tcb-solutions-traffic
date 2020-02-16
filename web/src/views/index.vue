@@ -16,7 +16,7 @@
               text-color="#fff"
               active-text-color="#ffd04b"
               mode="horizontal"
-              :default-active="2"
+              default-active="2"
             >
               <el-menu-item index="/dashboard">工作台首页</el-menu-item>
               <el-submenu index="2">

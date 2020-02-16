@@ -1,7 +1,7 @@
 <template>
   <section>
     <el-row type="flex" class="flex align-center" style="margin: 50px auto;">
-      <el-col :span="12" :offset="8">
+      <el-col :span="6" :offset="8">
         <h2 class="logo flex align-center">
           <svg-icon iconClass="logo" class="logo"></svg-icon>
           <span class="ml10">{{ env.VUE_APP_TITLE }}</span>
@@ -17,33 +17,7 @@
               show-icon
             />
           </header>
-          <el-form
-            class="login-form"
-            auto-complete="off"
-            size="medium"
-            :model="model"
-            :rules="rules"
-            ref="login-form"
-            label-position="top"
-          >
-            <el-form-item label="用户名" prop="username">
-              <el-input
-                type="text"
-                v-model="model.username"
-                placeholder="请输入用户名"
-              />
-            </el-form-item>
-            <el-form-item label="密码" prop="password">
-              <el-input
-                type="password"
-                v-model="model.password"
-                placeholder="请输入密码"
-              />
-            </el-form-item>
-            <el-button type="primary" :loading="loading" @click="submit">
-              {{ loading ? "登录中..." : "登录" }}
-            </el-button>
-          </el-form>
+          <el-button type="primary" @click="wxLogin">点击授权登录</el-button>
         </section>
       </el-col>
     </el-row>
@@ -52,9 +26,6 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
-import { get, post, put } from "./../utils/http";
-import { Form as ElForm } from "element-ui";
-import { storageKey } from "./../config/config";
 import ENV from "./../config/env";
 
 @Component({})
@@ -66,46 +37,34 @@ export default class extends Vue {
     username: "",
     password: ""
   };
-  // form validate rules
-  rules = {
-    username: [
-      { required: true, message: "请输入用户名" },
-      {
-        min: 2,
-        max: 16,
-        message: "用户名长度为2到16位"
-      }
-    ],
-    password: [
-      { required: true, message: "请输入密码" },
-      {
-        min: 4,
-        max: 16,
-        message: "密码长度为4到16位"
-      }
-    ]
-  };
-  submit() {
-    (this.$refs["login-form"] as ElForm).validate(async (valid: boolean) => {
-      if (!valid) {
-        return;
-      }
-
-      await post("login", this.model).then((res: any) => {
-        this.loading = true;
-        if (res.status !== 200) {
-          return this.$message.error("登录失败");
-        }
-        this.$message.success("登录成功");
-        localStorage.setItem(storageKey, res.data.token);
-
-        const returnUrl: any = this.$route.query.return;
-        if (returnUrl) {
-          this.$router.push(returnUrl);
-        }
-        this.$router.push("/dashboard");
-      });
+  wxLogin() {
+    const app = this.$tcb.init({
+      env: "dev-7e273e"
     });
+    console.log(app);
+    this.$tcb
+      .auth({
+        persistence: "session"
+      })
+      .weixinAuthProvider({
+        appid: "wxf5ccfafd9978d829",
+        scope: "snsapi_base"
+      })
+      .signIn()
+      .then(() => {
+        // 登录成功
+
+        const db = app.database();
+        const collection = db.collection("user");
+        db.collection("blogs")
+          .get()
+          .then((res: any) => {
+            console.log(res);
+          });
+      })
+      .catch((err: any) => {
+        // 登录失败
+      });
   }
 }
 </script>

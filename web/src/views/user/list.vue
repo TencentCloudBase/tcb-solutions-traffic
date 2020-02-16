@@ -13,27 +13,17 @@
             <el-popover placement="top" width="160" v-model="visible">
               <p>确定删除吗？</p>
               <div style="text-align: right; margin: 0">
-                <el-button size="mini" type="text" @click="visible = false"
-                  >取消</el-button
-                >
-                <el-button
-                  type="primary"
-                  size="mini"
-                  @click="deleteUser(scope.row._id)"
-                  >确定</el-button
-                >
+                <el-button size="mini" type="text" @click="visible = false">取消</el-button>
+                <el-button type="primary" size="mini" @click="deleteUser(scope.row._id)">确定</el-button>
               </div>
               <el-button
                 type="text"
                 size="small"
                 @click="deleteUser(scope.row._id)"
                 slot="reference"
-                >删除</el-button
-              >
+              >删除</el-button>
             </el-popover>
-            <el-button type="text" @click="gotoEdit(scope.row._id)" size="small"
-              >编辑</el-button
-            >
+            <el-button type="text" @click="gotoEdit(scope.row._id)" size="small">编辑</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -57,7 +47,7 @@ export default class extends Vue {
     this.$router.push(`/post/${id}/edit`);
   }
   loadData() {
-    //
+    this.loading = false;
   }
   created() {
     this.loadData();

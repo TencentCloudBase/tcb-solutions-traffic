@@ -111,11 +111,21 @@ var formatDate = function (datetime, suffix) {
   return [year, month, day].map(formatNumber).join(suffix);
 }
 
+function alert(title, duration = 1500, mask = true, icon = 'none'){
+    wx.showToast({
+        title: title,
+        icon: icon,
+        duration: duration,
+        mask: mask
+    })
+}
+
 module.exports = {
   randomNum,
   converMbSize,
   converSize,
   checkImage,
   json2Form,
-  formatDate
+  formatDate,
+  alert
 }

@@ -1,0 +1,26 @@
+<!--pages/noticeHistory/noticeHistory.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">历史通知</view>
+</cu-custom>
+<view class="padding">
+  <view class="padding-lr bg-white margin-top">
+    <view class="solid-bottom padding text-bold justify-between align-center flex">
+      <text>2020-01-01  12:20:30</text>
+      <text class="cuIcon-delete   text-blue" catchtap="noticeDel"></text>
+    </view>
+    <view class="padding">当前G235乘次的火车疑似感染者一名</view>
+  </view>
+  <view class="padding-lr bg-white margin-top" wx:for='424' wx:key='44545'>
+    <view class="solid-bottom padding text-bold justify-between align-center flex">
+      <text>2020-01-01  12:20:30</text>
+        <text class="cuIcon-delete   text-blue" catchtap="noticeDel"></text>
+    </view>
+    <view class="padding text-content">
+      <view class="text-bold margin-bottom">上海无新增新冠肺炎确诊病例</view>
+      <view>
+        据上海卫健委官方微博消息，2月16日0—12时，上海市排除新型冠状病毒肺炎疑似病例32例；新增治愈出院16例；无新增确诊病例。
+      </view>
+    </view>
+  </view>
+</view>

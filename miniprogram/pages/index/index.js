@@ -33,6 +33,12 @@ Page({
         filter: {
           'vehicle_type': this.data.picker[this.data.index]
         },
+        orderBy: 
+          {
+            _id: 'desc',
+            vehicle_creation_time: 'desc'
+          }
+        ,
         pageIndex: 1,
         pageSize: 10
       }

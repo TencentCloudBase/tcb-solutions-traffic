@@ -6,7 +6,7 @@
 <form class="container {{intype=='view'?'h-form-view':''}}" bindsubmit="formSubmit">
   <view class="cu-form-group margin-top">
     <view class="title">日期</view>
-    <picker mode="date" value="{{date}}" disabled="{{intype=='view'}}" start="2015-09-01" end="2020-09-01" bindchange="dateChange" name="date">
+    <picker mode="date" value="{{date}}" disabled="{{intype=='view'}}" start="2015-09-01" end="{{nowDate}}" bindchange="dateChange" name="date">
       <view class="picker">
         {{date}}
       </view>
@@ -20,21 +20,21 @@
       </view>
     </picker>
   </view>
-  <view class="cu-form-group">
+  <!-- <view class="cu-form-group">
     <view class="title">区域</view>
     <picker mode="region" name="region" disabled="{{intype=='view'}}" bindchange="regionChange" value="{{region}}">
       <view class="picker">
         {{region[0]}} {{region[1]}} {{region[2]}}
       </view>
     </picker>
-  </view>
+  </view> -->
 
   <view class="cu-form-group">
-    <view class="title">详细地址</view>
-    <input placeholder="请输入详细地址" disabled="{{intype=='view'}}" name="address" value="{{locationAddress}}"></input>
+    <view class="title">地址</view>
+    <input placeholder="点击右侧小图标可以获取地址" disabled="{{!hasLocation}}" name="address" value="{{locationAddress}}"></input>
     <button catchtap="openLocation" class="cuIcon-locationfill text-blue" size="mini" wx:if='{{intype=="view"}}'></button>
     <button open-type="openSetting" bindopensetting="callbackSetting" class="cuIcon-locationfill text-blue" size="mini" wx:elif='{{setAuth}}'></button>
-    <button class="cuIcon-locationfill text-blue" size="mini" bindtap="chooseLocation" wx:elif='{{!hasLocation}}'></button>
+    <button class="cuIcon-locationfill text-blue" size="mini" bindtap="chooseLocation" wx:elif='{{intype!="view"}}'></button>
   </view>
 
   <map subkey="{{subKey}}" style="width: 100%; height: 280px;" latitude="{{latitude}}" longitude="{{longitude}}" scale="{{18}}" markers="{{markers}}" enable-zoom="true" enable-scroll="true" wx:if='{{intype=="view"}}'>

@@ -25,10 +25,14 @@ Page({
   },
 
   searchVehicle(){
+    console.log(this.data.picker[this.data.index])
     wx.cloud.callFunction({
       name: 'pagination',
       data: {
         dbName: 'vehicle',
+        filter: {
+          'vehicle_type': this.data.picker[this.data.index]
+        },
         pageIndex: 1,
         pageSize: 10
       }
@@ -47,7 +51,11 @@ Page({
   onLoad: function(options) {
 
   },
-
+  PickerChange(e) {
+    this.setData({
+      index: e.detail.value
+    })
+  },
   DateChange(e) {
     this.setData({
       date: e.detail.value

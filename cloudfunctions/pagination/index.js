@@ -8,7 +8,7 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   const dbName = event.dbName;
   let { filter, pageIndex, pageSize } = event;
-  filter = filter ? filter : null;
+  filter = event.filter ? event.filter : null;
   pageIndex = pageIndex ? pageIndex : 1;
   pageSize = pageSize ? pageSize : 10;
   const countResult = await db.collection(dbName).where(filter).count();

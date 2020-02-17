@@ -14,7 +14,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     const intype = options.intype ? options.intype : "add";
     const customTitle = intype == "add" ? "增加轨迹" : "轨迹详情";
     this.setData({
@@ -32,49 +32,57 @@ Page({
         name: 'T.I.T 创意园'
       }],
     })
+    this.getNowDate();
+  },
 
+  getNowDate() {
 
+    const getNowDate = util.formatTime(new Date(), "day");
+    console.log(getNowDate)
+    this.setData({
+      nowDate: getNowDate
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
   timeChange(e) {
@@ -88,7 +96,7 @@ Page({
     })
   },
 
-  regionChange: function(e) {
+  regionChange: function (e) {
     this.setData({
       region: e.detail.value
     })
@@ -96,13 +104,14 @@ Page({
 
   // 获取位置
   chooseLocation() {
-    const that = this
+    const that = this;
     wx.chooseLocation({
       success(res) {
         console.log(res)
         that.setData({
           hasLocation: true,
-          locationAddress: res.address
+          locationAddress: res.address,
+          location: res
         })
       },
       fail: (res) => {
@@ -129,12 +138,39 @@ Page({
     }
   },
   // 添加轨迹
-  formSubmit: function(e) {
+  formSubmit: function (e) {
     const info = e.detail.value;
+    if (this.data.onSubmit) {
+      return;
+    }
+    this.data.onSubmit = true;
     if (info.address == "") {
       util.alert("请输入详细地址");
       return;
-    }
+    };
+    const location = this.data.location;
+    wx.cloud.callFunction({
+      name: 'creationHistoricalRoute',
+      data: {
+        route_longitude: location.longitude,
+        route_latitude: location.latitude,
+        route_creation_time: info.date + " " + info.time,
+        vehicle_id: "27fd2b3f-9aa5-424f-8d5b-36f6a6e22917"
+      },
+      complete: res => {
+        console.log(res);
+        if (res.result.code == "0") {
+          util.alert("添加成功", 1500, true, "success");
+          this.data.onSubmit = false;
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 1000)
+        } else {
+          util.alert(res.result.message);
+          this.data.onSubmit = false;
+        }
+      }
+    });
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
   },
   // 删除轨迹

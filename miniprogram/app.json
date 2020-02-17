@@ -4,7 +4,8 @@
     "pages/track/track",
     "pages/userInfoEdit/userInfoEdit",
     "pages/my/my",
-    "pages/trackAdd/trackAdd"
+    "pages/trackAdd/trackAdd",
+    "pages/noticeHistory/noticeHistory"
   ],
   "tabBar": {
     "color": "#333333",

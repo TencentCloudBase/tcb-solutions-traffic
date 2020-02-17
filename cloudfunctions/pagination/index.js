@@ -12,7 +12,7 @@ exports.main = async (event, context) => {
   orderBy = event.orderBy ? event.orderBy : null;
   pageIndex = pageIndex ? pageIndex : 1;
   pageSize = pageSize ? pageSize : 10;
-  const countResult = await db.collection(dbName).where(filter).count();
+  const countResult = filter ? await db.collection(dbName).where(filter).count() : await db.collection(dbName).count();
   const total = countResult.total;
   const totalPage = Math.ceil(total / pageSize);
   let hasMore = true;
@@ -20,7 +20,8 @@ exports.main = async (event, context) => {
     hasMore = false;
   }
 
-  let result = db.collection(dbName).where(filter).skip((pageIndex - 1) * pageSize).limit(pageSize);
+  let result = filter ? db.collection(dbName).where(filter) : db.collection(dbName);
+  result = result.skip((pageIndex - 1) * pageSize).limit(pageSize);
   if(!orderBy){
     return result.get().then(res => {
       res.hasMore = hasMore;

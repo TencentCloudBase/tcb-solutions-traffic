@@ -20,19 +20,22 @@ Page({
     this.setData({
       intype,
       customTitle,
-    })
-    // 测试数据
-    intype == "view" && this.setData({
-      locationAddress: '广州市海珠区新港中路397号',
-      latitude: 23.099994,
-      longitude: 113.324520,
+    });
+
+    this.getNowDate();
+    intype == "view" && this.trackInfoGet(options.idx);
+  },
+  trackInfoGet(idx) {
+    const pages = getCurrentPages();
+    var trackInfo = pages[pages.length - 2].data.trackList[idx];
+    this.setData({
+      trackInfo,
       markers: [{
-        latitude: 23.099994,
-        longitude: 113.324520,
-        name: 'T.I.T 创意园'
+        latitude: trackInfo.route_latitude,
+        longitude: trackInfo.route_longitude,
+        name: trackInfo.route_address
       }],
     })
-    this.getNowDate();
   },
 
   getNowDate() {
@@ -162,6 +165,9 @@ Page({
         if (res.result.code == "0") {
           util.alert("添加成功", 1500, true, "success");
           this.data.onSubmit = false;
+          const pages = getCurrentPages();
+          pages[pages.length - 2].data.pageCount = 1;
+          pages[pages.length - 2].getInfoList();
           setTimeout(() => {
             wx.navigateBack();
           }, 1000)
@@ -175,18 +181,49 @@ Page({
   },
   // 删除轨迹
   delTrack() {
+    const that = this;
+    console.log(that.data.trackInfo._id);
     wx.showModal({
       content: '确认删除该条轨迹？',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定');
+          const db = wx.cloud.database()
+          db.collection('historical_route').doc(that.data.trackInfo._id).remove({
+            success: res => {
+              wx.showToast({
+                title: '删除成功',
+              })
+              const pages = getCurrentPages();
+              pages[pages.length - 2].data.pageCount = 1;
+              pages[pages.length - 2].getInfoList();
+              setTimeout(() => {
+                wx.navigateBack();
+              }, 800)
+            },
+            fail: err => {
+              wx.showToast({
+                icon: 'none',
+                title: '删除失败',
+              })
+              console.error('[数据库] [删除记录] 失败：', err)
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
   },
   // 打开位置
   openLocation(e) {
     console.log(e)
+    const trackInfo = this.data.trackInfo;
     wx.openLocation({
-      longitude: 113.324520,
-      latitude: 23.099994,
-      name: "T.I.T 创意园",
-      address: "广州市海珠区新港中路397号"
+      longitude: trackInfo.route_longitude,
+      latitude: trackInfo.route_latitude,
+      name: trackInfo.route_address,
+      address: trackInfo.route_address
     })
   }
 })

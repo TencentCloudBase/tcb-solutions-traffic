@@ -3,3 +3,9 @@
 .h-form-view .cu-form-group picker::after{
   width:0;
 }
+
+.cu-form-group .timeview{
+  flex: 1;
+  color: #555;
+  text-align: left;
+}

@@ -1,26 +1,31 @@
 <!--pages/trackAdd/trackAdd.wxml-->
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
-  <view slot="backText">返回</view>
-  <view slot="content">{{customTitle}}</view>
+	<view slot="backText">返回</view>
+	<view slot="content">{{customTitle}}</view>
 </cu-custom>
 <form class="container {{intype=='view'?'h-form-view':''}}" bindsubmit="formSubmit">
-  <view class="cu-form-group margin-top">
-    <view class="title">日期</view>
-    <picker mode="date" value="{{date}}" disabled="{{intype=='view'}}" start="2015-09-01" end="{{nowDate}}" bindchange="dateChange" name="date">
-      <view class="picker">
-        {{date}}
-      </view>
-    </picker>
-  </view>
-  <view class="cu-form-group">
-    <view class="title">时间</view>
-    <picker mode="time" value="{{time}}" disabled="{{intype=='view'}}" name="time" start="09:01" end="21:01" bindchange="timeChange">
-      <view class="picker">
-        {{time}}
-      </view>
-    </picker>
-  </view>
-  <!-- <view class="cu-form-group">
+	<view class="cu-form-group margin-top" wx:if='{{intype=="add"}}'>
+		<view class="title">日期</view>
+		<picker mode="date" value="{{date}}" disabled="{{intype=='view'}}" start="2015-09-01" end="{{nowDate}}" bindchange="dateChange" name="date">
+			<view class="picker">
+				{{date}}
+			</view>
+		</picker>
+
+	</view>
+	<view class="cu-form-group" wx:if='{{intype=="add"}}'>
+		<view class="title">时间</view>
+		<picker mode="time" value="{{time}}" disabled="{{intype=='view'}}" name="time" start="09:01" end="21:01" bindchange="timeChange">
+			<view class="picker">
+				{{time}}
+			</view>
+		</picker>
+	</view>
+	<view class="cu-form-group" wx:if='{{intype=="view"}}'>
+		<view class="title">时间</view>
+		<view class="timeview">{{trackInfo.route_creation_time}}</view>
+	</view>
+	<!-- <view class="cu-form-group">
     <view class="title">区域</view>
     <picker mode="region" name="region" disabled="{{intype=='view'}}" bindchange="regionChange" value="{{region}}">
       <view class="picker">
@@ -29,19 +34,20 @@
     </picker>
   </view> -->
 
-  <view class="cu-form-group">
-    <view class="title">地址</view>
-    <input placeholder="点击右侧小图标可以获取地址" disabled="{{!hasLocation}}" name="address" value="{{locationAddress}}"></input>
-    <button catchtap="openLocation" class="cuIcon-locationfill text-blue" size="mini" wx:if='{{intype=="view"}}'></button>
-    <button open-type="openSetting" bindopensetting="callbackSetting" class="cuIcon-locationfill text-blue" size="mini" wx:elif='{{setAuth}}'></button>
-    <button class="cuIcon-locationfill text-blue" size="mini" bindtap="chooseLocation" wx:elif='{{intype!="view"}}'></button>
-  </view>
+	<view class="cu-form-group">
+		<view class="title">地址</view>
+		<view class="timeview" wx:if='{{intype=="view"}}'>{{trackInfo.route_address}}</view>
+		<input placeholder="点击右侧小图标可以获取地址" disabled="{{!hasLocation}}" name="address" value="{{locationAddress}}" wx:else></input>
+		<button catchtap="openLocation" class="cuIcon-locationfill text-blue" size="mini" wx:if='{{intype=="view"}}'></button>
+		<button open-type="openSetting" bindopensetting="callbackSetting" class="cuIcon-locationfill text-blue" size="mini" wx:elif='{{setAuth}}'></button>
+		<button class="cuIcon-locationfill text-blue" size="mini" bindtap="chooseLocation" wx:elif='{{intype!="view"}}'></button>
+	</view>
 
-  <map subkey="{{subKey}}" style="width: 100%; height: 280px;" latitude="{{latitude}}" longitude="{{longitude}}" scale="{{18}}" markers="{{markers}}" enable-zoom="true" enable-scroll="true" wx:if='{{intype=="view"}}'>
-  </map>
-  <view class="padding flex btm-btn">
-    <button class="cu-btn  bg-gradual-blue margin-tb-xl lg shadow-blur" formType="submit" wx:if='{{intype=="add"}}'>确认添加</button>
-    <button class="cu-btn  bg-gradual-blue margin-tb-xl lg shadow-blur" wx:elif='{{intype=="view"}}' catchtap="delTrack">删除</button>
-  </view>
+	<map subkey="{{subKey}}" style="width: 100%; height: 280px;" latitude="{{trackInfo.route_latitude}}" longitude="{{trackInfo.route_longitude}}" scale="{{18}}" markers="{{markers}}" enable-zoom="true" enable-scroll="true" wx:if='{{intype=="view"}}'>
+	</map>
+	<view class="padding flex btm-btn">
+		<button class="cu-btn  bg-gradual-blue margin-tb-xl lg shadow-blur" formType="submit" wx:if='{{intype=="add"}}'>确认添加</button>
+		<button class="cu-btn  bg-gradual-blue margin-tb-xl lg shadow-blur" wx:elif='{{intype=="view"}}' catchtap="delTrack">删除</button>
+	</view>
 
 </form>

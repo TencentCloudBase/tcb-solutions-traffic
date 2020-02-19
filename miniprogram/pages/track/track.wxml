@@ -1,18 +1,24 @@
 <cu-custom bgColor="bg-gradual-blue">
-  <view slot="content">历史轨迹</view>
+	<view slot="content">历史轨迹</view>
 </cu-custom>
 <view class="container">
-  <view class="cu-list menu card-menu sm-border margin-top margin-bottom">
-    <navigator  url="/pages/trackAdd/trackAdd?intype=view" class="cu-item arrow" wx:for='454545454545454545' wx:key='id'>
-      <view class="content">
-        <text class="text-grey">历史轨迹{{index + 1}}</text>
-      </view>
-    </navigator>
-  </view>
-  <view class="recordAdd">
-    <navigator url="/pages/trackAdd/trackAdd" class="cu-btn bg-blue round shadow">
-      <text class="cuIcon-add"></text>
-    </navigator>
-  </view>
+	<view class="cu-list menu card-menu sm-border margin-top margin-bottom">
+		<navigator url="/pages/trackAdd/trackAdd?intype=view&idx={{index}}" class="cu-item arrow" wx:for='{{trackList}}' wx:key='_id'>
+			<view class="content padding-tb-sm">
+				<view class="action">
+					<text class="text-grey text-df text-bold">{{item.route_creation_time}}</text>
+				</view>
+				<view>
+					<text class="text-grey">{{item.route_address}}</text>
+				</view>
+
+			</view>
+		</navigator>
+	</view>
+	<view class="recordAdd">
+		<navigator url="/pages/trackAdd/trackAdd" class="cu-btn bg-blue round shadow">
+			<text class="cuIcon-add"></text>
+		</navigator>
+	</view>
 
 </view>

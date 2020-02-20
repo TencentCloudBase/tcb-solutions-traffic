@@ -24,7 +24,10 @@ Page({
 
     this.getNowDate();
     intype == "view" && this.trackInfoGet(options.idx);
+    console.log(this.changeDateFormat("2020-02-20T12:49:39.602Z"));
   },
+
+ 
   trackInfoGet(idx) {
     const pages = getCurrentPages();
     var trackInfo = pages[pages.length - 2].data.trackList[idx];
@@ -33,8 +36,9 @@ Page({
       markers: [{
         latitude: trackInfo.route_latitude,
         longitude: trackInfo.route_longitude,
-        name: trackInfo.route_address_name?trackInfo.route_address_name:trackInfo.route_address,
+        name: trackInfo.route_address_name ? trackInfo.route_address_name : trackInfo.route_address,
       }],
+      creatTime:util.formatDateTime(trackInfo.creat_time)
     })
   },
 
@@ -158,7 +162,7 @@ Page({
         route_latitude: location.latitude,
         route_creation_time: info.date + " " + info.time,
         vehicle_id: "27fd2b3f-9aa5-424f-8d5b-36f6a6e22917",
-        route_address_name:location.name
+        route_address_name: location.name
       },
       complete: res => {
         console.log(res);

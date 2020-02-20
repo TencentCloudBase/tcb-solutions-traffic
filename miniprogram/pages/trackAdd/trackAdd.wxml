@@ -26,10 +26,7 @@
 			<view class="title">时间</view>
 			<view class="timeview">{{trackInfo.route_creation_time}}</view>
 		</view>
-		<!-- <view class="cu-form-group">
-			<view class="title">创建时间</view>
-			<view class="timeview">{{trackInfo.creat_time}}</view>
-		</view> -->
+
 	</block>
 	<!-- <view class="cu-form-group">
     <view class="title">区域</view>
@@ -48,7 +45,10 @@
 		<button open-type="openSetting" bindopensetting="callbackSetting" class="cuIcon-locationfill text-blue" size="mini" wx:elif='{{setAuth}}'></button>
 		<button class="cuIcon-locationfill text-blue" size="mini" bindtap="chooseLocation" wx:elif='{{intype!="view"}}'></button>
 	</view>
-
+	<view class="cu-form-group" wx:if='{{intype=="view"}}'>
+		<view class="title">创建时间</view>
+		<view class="timeview">{{creatTime}}</view>
+	</view>
 	<map subkey="{{subKey}}" style="width: 100%; height: 280px;" latitude="{{trackInfo.route_latitude}}" longitude="{{trackInfo.route_longitude}}" scale="{{18}}" markers="{{markers}}" enable-zoom="true" enable-scroll="true" wx:if='{{intype=="view"}}'>
 	</map>
 	<view class="padding flex btm-btn">

@@ -147,6 +147,30 @@ function formatTime(date, flage) {
   }
   return formatTime;
 }
+
+
+function formatDateTime(date, withMs = false) {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+  const ms = date.getMilliseconds()
+
+  let ret = [year, month, day].map(value => formatLeadingZeroNumber(value, 2)).join('-') +
+    ' ' + [hour, minute, second].map(value => formatLeadingZeroNumber(value, 2)).join(':')
+  if (withMs) {
+    ret += '.' + formatLeadingZeroNumber(ms, 3)
+  }
+  return ret
+}
+
+function formatLeadingZeroNumber(n, digitNum = 2) {
+  n = n.toString()
+  const needNum = Math.max(digitNum - n.length, 0)
+  return new Array(needNum).fill(0).join('') + n
+}
 module.exports = {
   randomNum,
   converMbSize,
@@ -155,5 +179,6 @@ module.exports = {
   json2Form,
   formatDate,
   alert,
-  formatTime
+  formatTime,
+  formatDateTime
 }

@@ -20,8 +20,7 @@ exports.main = async (event, context) => {
           'route_creator': OPENID
         },
         orderBy: {
-          _id: 'desc',
-          route_creation_time: 'desc'
+          creat_time: 'desc'
         },
         pageIndex: event.pageIndex,
         pageSize: 10

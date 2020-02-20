@@ -21,10 +21,16 @@
 			</view>
 		</picker>
 	</view>
-	<view class="cu-form-group" wx:if='{{intype=="view"}}'>
-		<view class="title">时间</view>
-		<view class="timeview">{{trackInfo.route_creation_time}}</view>
-	</view>
+	<block wx:if='{{intype=="view"}}'>
+		<view class="cu-form-group">
+			<view class="title">时间</view>
+			<view class="timeview">{{trackInfo.route_creation_time}}</view>
+		</view>
+		<!-- <view class="cu-form-group">
+			<view class="title">创建时间</view>
+			<view class="timeview">{{trackInfo.creat_time}}</view>
+		</view> -->
+	</block>
 	<!-- <view class="cu-form-group">
     <view class="title">区域</view>
     <picker mode="region" name="region" disabled="{{intype=='view'}}" bindchange="regionChange" value="{{region}}">

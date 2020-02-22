@@ -1529,7 +1529,8 @@ button.icon.lg {
 	overflow: hidden;
 	margin-right: 30rpx;
 	margin-left: 30rpx;
-	border-radius: 20rpx
+	border-radius: 20rpx;
+	padding-bottom: 130rpx;
 }
 
 

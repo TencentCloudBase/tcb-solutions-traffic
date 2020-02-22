@@ -9,7 +9,7 @@
 					<text class="text-grey text-df text-bold">{{item.route_creation_time}}</text>
 				</view>
 				<view>
-					<text class="text-grey">{{item.route_address}}</text>
+					<text class="text-grey">{{item.route_address}}{{item.route_address_name?item.route_address_name:''}}</text>
 				</view>
 
 			</view>

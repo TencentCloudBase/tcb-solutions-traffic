@@ -5,12 +5,14 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk');
 const request = require('request');
-cloud.init();
+cloud.init({
+  env: process.env.TCB_ENV,
+})
 const db = cloud.database();
 // 云函数入口函数
 exports.main = async (event, context) => {
   const { OPENID } = cloud.getWXContext();
-  const { route_longitude, route_latitude, route_creation_time, vehicle_id } = event;
+  const { route_longitude, route_latitude, route_creation_time, vehicle_id,route_address_name } = event;
   let result = {code: 0};
   return new Promise(resolve => {
     if (!route_longitude || !route_latitude) {
@@ -39,7 +41,10 @@ exports.main = async (event, context) => {
         route_province: address_component.province,
         route_city: address_component.city,
         route_district: address_component.district,
-        route_address: address
+        route_address: address,
+        route_address_name: route_address_name,
+        creat_time:db.serverDate(),
+
       };
       db.collection('historical_route').add({
         data: historicalRoute,

@@ -147,6 +147,15 @@ function formatTime(date, flage) {
   }
   return formatTime;
 }
+
+
+function formatDateTime(_time) {
+  var t = new Date(_time).toJSON();
+  var date = new Date(+new Date(t) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+  return date;
+}
+
+ 
 module.exports = {
   randomNum,
   converMbSize,
@@ -155,5 +164,6 @@ module.exports = {
   json2Form,
   formatDate,
   alert,
-  formatTime
+  formatTime,
+  formatDateTime
 }
